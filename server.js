@@ -7,7 +7,11 @@ const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
 const port = process.env.PORT || 3000;
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDoc = require('./swagger.json');
+
 // Setting up middlewares
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
