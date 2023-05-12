@@ -1,0 +1,76 @@
+//Local Host
+
+###get all contacts
+GET http://localhost:3000/contacts
+
+###
+GET http://localhost:3000/contacts/644e065c2f0790d60d81920a
+
+### Create contact
+POST http://localhost:3000/contacts/create HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Neil", 
+    "lastName": "Mariano", 
+    "email": "nmariano@byui.edu", 
+    "favoriteColor": "gray", 
+    "birthday": "02-15-1994"
+}
+
+### Put contact
+PUT http://localhost:3000/contacts/6455739a514209e59a70fc20 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Yonghwan", 
+    "lastName": "Yi", 
+    "email": "yong311@byui.edu", 
+    "favoriteColor": "gray", 
+    "birthday": "03-11-1996"
+}
+
+### Delete contact
+DELETE http://localhost:3000/contacts/6455739a514209e59a70fc20 HTTP/1.1
+
+
+
+### CREATE CONTACT
+POST http://cse341week3-0b1t.onrender.com/contacts/create HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"Yong",
+    "email":"yonghwan311@gmail.com",
+    "lastName":"Lee",
+    "birthday":"03.11. 1996",
+    "favoriteColor":"Green"
+}
+
+
+### Create contact
+POST https://cse341week3-0b1t.onrender.com/contacts/create HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Neil", 
+    "lastName": "Mariano", 
+    "email": "nmariano@byui.edu", 
+    "favoriteColor": "gray", 
+    "birthday": "02-15-1994"
+}
+
+### Put contact
+PUT https://cse341week3-0b1t.onrender.com/contacts/6455740e38af6f9d03c51b87 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Yonghwan", 
+    "lastName": "Yi", 
+    "email": "yong311@byui.edu", 
+    "favoriteColor": "gray", 
+    "birthday": "03-11-1996"
+}
+
+### Delete contact
+DELETE https://cse341week3-0b1t.onrender.com/contacts/6455740e38af6f9d03c51b87 HTTP/1.1
