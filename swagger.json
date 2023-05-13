@@ -123,7 +123,7 @@
         }
       }
     },
-    "create": {
+    "/contacts/post": {
       "post": {
         "description": "",
         "produces": [
