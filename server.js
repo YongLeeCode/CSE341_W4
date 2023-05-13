@@ -18,16 +18,16 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc, options));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use((req, res, next) =>{
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader(
-//     'Access-Control-Allow-Origin',
-//     'Origin, X-Requested-With, content-Type, Accept, Z-Key'
-//     );
-//   res.setHeader('Content-Type', 'application/json');
-//   res.setHeader('Access-Controll-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-//   next();
-// });
+app.use((req, res, next) =>{
+  // res.setHeader('Access-Control-Allow-Origin', '*');
+  // res.setHeader(
+    // 'Access-Control-Allow-Origin',
+    // 'Origin, X-Requested-With, content-Type, Accept, Z-Key'
+    // );
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Controll-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+});
 
 app.use(`/`, require(`./routes`));
 
