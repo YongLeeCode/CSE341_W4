@@ -9,7 +9,7 @@ routes.get('/search', contactController.searchContact);
 
 routes.get('/:id', contactController.getSingle);
 
-routes.post('/post', contactController.addContact);
+routes.post('/', contactController.addContact);
 
 routes.put('/:id', contactController.updateContact);
 
