@@ -5,6 +5,5 @@ routes.get('/', (req, res, next) => {
 });
 
 routes.use('/contacts', require('./contacts'));
-routes.use('/', require('./swagger'))
 
 module.exports = routes;
