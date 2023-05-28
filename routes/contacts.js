@@ -11,7 +11,7 @@ routes.get('/:id', contactController.getSingle);
 
 routes.post('/', validation.saveContact, contactController.addContact);
 
-routes.put('/:id', contactController.updateContact);
+routes.put('/:id', validation.saveContact, contactController.updateContact);
 
 routes.delete('/:id', contactController.deleteContact);
 
