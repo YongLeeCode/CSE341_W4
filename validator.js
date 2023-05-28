@@ -65,9 +65,13 @@ const validator = require('./validation');
 // };
 
 const saveContact = [
-  body('email').notEmpty().isEmail().withMessage('invalid email'),
+  body('lastName').notEmpty().withMessage('lastName missing'),
   body('firstName').notEmpty().withMessage('name is missing'),
-  validator,
+  body('email').notEmpty().isEmail().withMessage('invalid email'),
+  body('favoriteColor').notEmpty().withMessage('color miss'),
+  body('birthday').notEmpty().withMessage('birthday miss'),
+  
+  validator
 ];
 
 module.exports = {
