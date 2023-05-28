@@ -3,17 +3,19 @@ var app = express();
 // Middlewares
 var cors = require('cors');
 const bodyParser = require('body-parser');
-
+//mongodb
 const mongodb = require('./db/connect');
 const port = process.env.PORT || 3000;
-
+//api
 const swaggerUi = require('swagger-ui-express');
 const swaggerDoc = require('./swagger.json');
+//validation
 
 
 // Setting up middlewares
 app.use('/api-docs', swaggerUi.serve);
-app.get('/api-docs', swaggerUi.setup(swaggerDoc))
+app.get('/api-docs', swaggerUi.setup(swaggerDoc));
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

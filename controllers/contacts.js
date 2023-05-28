@@ -1,5 +1,6 @@
 const mongodb = require('../db/connect');
 var ObjectId = require('mongodb').ObjectId;
+const validate = require('../validator');
 
 // GET Requests
 
@@ -37,7 +38,6 @@ const searchContact = async (req, res, next) => {
 
 // POST requests
 const addContact = async (req, res, next) => {
-  
   const contact = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -51,7 +51,7 @@ const addContact = async (req, res, next) => {
     res.setHeader(`Content-Type`, `application/json`);
     result
       ? res
-          .status(201)
+          .status(201)  
           .json({ message: 'Document added successfully', docId: result.insertedId.toString() })
       : res.status(404).json({ message: 'Document not added' });
   } catch (error) {
@@ -61,22 +61,40 @@ const addContact = async (req, res, next) => {
 
 // PUT requests
 const updateContact = async (req, res, next) => {
-  try {
-    const o_id = new ObjectId(req.params.id);
-    const _ = await mongodb
+  const o_id = new ObjectId(req.params.id);
+    const contact = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday
+    }
+    const response = await mongodb
       .getDb()
       .db('CSE341')
       .collection('contacts')
-      .updateOne({ _id: o_id }, { $set: req.body })
-      .then((result) => {
-        res.setHeader(`Content-Type`, `application/json`);
-        result.modifiedCount > 0
-          ? res.status(204).send()
-          : res.status(404).json({ message: `No document updated` });
-      });
-  } catch (err) {
-    console.log(err);
-  }
+      .replaceOne({_id: o_id}, contact);
+    
+    if(response.modifiedCount > 0){
+      res.status(204).send();
+    } else {
+      res.status(500),json(response.err || 'some error occured')
+    }
+  // try {
+  //   const _ = await mongodb
+  //     .getDb()
+  //     .db('CSE341')
+  //     .collection('contacts')
+  //     .updateOne({ _id: o_id }, { $set: req.body })
+  //     .then((result) => {
+  //       res.setHeader(`Content-Type`, `application/json`);
+  //       result.modifiedCount > 0
+  //         ? res.status(204).send()
+  //         : res.status(404).json({ message: `No document updated` });
+  //     });
+  // } catch (err) {
+  //   console.log(err);
+  // }
 };
 
 // DELETE requests
