@@ -1,6 +1,5 @@
 const mongodb = require('../db/connect');
 var ObjectId = require('mongodb').ObjectId;
-const validate = require('../validator');
 
 // GET Requests
 
